@@ -1,18 +1,29 @@
 using NUnit.Framework;
+using RandomNumbersGame.Application;
+using RandomNumbersGame.Application.Interfaces;
 
 namespace RandomNumbersGame.Tests
 {
     public class RandomNumbersTests
     {
+        private IRandomNumberGenerator _randomNumberGenerator;
+
         [SetUp]
         public void Setup()
         {
+            _randomNumberGenerator = new RandomNumberGenerator();
         }
-
+    
         [Test]
         public void ShouldGenerateARandomNumberBetween1and100()
         {
-            Assert.Fail();
+            // ACT
+            var result = _randomNumberGenerator.GenerateRandomNumber();
+
+            // ASSERT           
+            Assert.Less(result, 100);
+            Assert.Greater(result, 0);
+            Assert.Greater(result, 1);
         }
 
         [Test]

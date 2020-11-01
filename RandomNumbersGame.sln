@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RandomNumbersGame.Domain", "RandomNumbersGame.Domain\RandomNumbersGame.Domain.csproj", "{8F319185-5B32-4831-8853-9A7E7DC45193}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RandomNumbersGame.Application", "RandomNumbersGame.Domain\RandomNumbersGame.Application.csproj", "{8F319185-5B32-4831-8853-9A7E7DC45193}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RandomNumbersGame.Tests", "RandomNumbersGame.Tests\RandomNumbersGame.Tests.csproj", "{D9FEC923-C6FF-4F42-8167-D8E7DF519769}"
 EndProject
