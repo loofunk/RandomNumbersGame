@@ -100,8 +100,8 @@ namespace RandomNumbersGame.Tests
             Assert.IsFalse(_randomNumberGenerator.IsGameOver());
         }
 
-        [TestCase(3, 0)]
-        [TestCase(7, 0)]
+        [TestCase(3, 3)]
+        [TestCase(7, 7)]
         public void GivenASetOfLowerShouldSetTotalPointsToCorrectValue(int numberOfLowerGuesses,
             int expectedTotalPoints)
         {
@@ -117,14 +117,72 @@ namespace RandomNumbersGame.Tests
 
             // ASSERT
             Assert.AreEqual(expectedTotalPoints, result);
+            Assert.IsFalse(_randomNumberGenerator.IsGameOver());
+        }
+
+        [Test]
+        public void GivenASetOfCorrectGuessShouldSetTotalPointsToCorrectValue()
+        {
+            // ARRANGE
+            _randomNumberGenerator.ApplyUserGuess(Guess.Higher, 1, 22);
+            _randomNumberGenerator.ApplyUserGuess(Guess.Higher, 22, 32);
+            _randomNumberGenerator.ApplyUserGuess(Guess.Higher, 32, 52);
+            _randomNumberGenerator.ApplyUserGuess(Guess.Higher, 62, 92);
+            _randomNumberGenerator.ApplyUserGuess(Guess.Lower, 14, 2);
+            _randomNumberGenerator.ApplyUserGuess(Guess.Lower, 44, 22);
+
+            // ACT
+            var result = _randomNumberGenerator.GetTotalPoints();
+
+            // ASSERT
+            Assert.AreEqual(6, result);
+            Assert.IsFalse(_randomNumberGenerator.IsGameOver());
+        }
+
+        [Test]
+        public void GivenASetOfGuessesWithLastOneWrongShouldSetTotalPointsToCorrectValue()
+        {
+            // ARRANGE
+            _randomNumberGenerator.ApplyUserGuess(Guess.Higher, 1, 22);
+            _randomNumberGenerator.ApplyUserGuess(Guess.Higher, 22, 32);
+            _randomNumberGenerator.ApplyUserGuess(Guess.Higher, 32, 52);
+            _randomNumberGenerator.ApplyUserGuess(Guess.Higher, 62, 92);
+            _randomNumberGenerator.ApplyUserGuess(Guess.Lower, 14, 2);
+            _randomNumberGenerator.ApplyUserGuess(Guess.Lower, 44, 22);
+
+            // Wrong guess
+            _randomNumberGenerator.ApplyUserGuess(Guess.Higher, 44, 22);
+
+            // ACT
+            var result = _randomNumberGenerator.GetTotalPoints();
+
+            // ASSERT
+            Assert.AreEqual(6, result);
             Assert.IsTrue(_randomNumberGenerator.IsGameOver());
         }
 
 
         [Test]
-        public void GivenMaximumPointsSetOfPointsShouldSetGameToFinished(int input)
+        public void GivenMaximumPointsSetOfPointsShouldSetGameToFinished()
         {
-            Assert.Fail();
+            // ARRANGE
+            _randomNumberGenerator.ApplyUserGuess(Guess.Higher, 1, 22);
+            _randomNumberGenerator.ApplyUserGuess(Guess.Higher, 22, 32);
+            _randomNumberGenerator.ApplyUserGuess(Guess.Higher, 32, 52);
+            _randomNumberGenerator.ApplyUserGuess(Guess.Higher, 62, 92);
+            _randomNumberGenerator.ApplyUserGuess(Guess.Lower, 14, 2);
+            _randomNumberGenerator.ApplyUserGuess(Guess.Lower, 44, 22);
+            _randomNumberGenerator.ApplyUserGuess(Guess.Higher, 1, 22);
+            _randomNumberGenerator.ApplyUserGuess(Guess.Higher, 22, 32);
+            _randomNumberGenerator.ApplyUserGuess(Guess.Higher, 32, 52);
+            _randomNumberGenerator.ApplyUserGuess(Guess.Higher, 62, 92);
+
+            // ACT
+            var result = _randomNumberGenerator.GetTotalPoints();
+
+            // ASSERT
+            Assert.AreEqual(10, result);
+            Assert.IsTrue(_randomNumberGenerator.IsGameOver());
         }
     }
 }

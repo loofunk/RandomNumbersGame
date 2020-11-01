@@ -46,13 +46,20 @@ namespace RandomNumbersGame.Application
             {
                 if (IsInputHigher(previousGenNumber, newGenNumber))
                     _totalPoints += 1;
+                else
+                    _isGameOver = true;
             }
 
             if (userGuess == Guess.Lower)
             {
                 if (IsInputlower(previousGenNumber, newGenNumber))
+                    _totalPoints += 1;
+                else
                     _isGameOver = true;
             }
+
+            if (_totalPoints >= 10)
+                _isGameOver = true;
         }
 
         public int GetTotalPoints()
