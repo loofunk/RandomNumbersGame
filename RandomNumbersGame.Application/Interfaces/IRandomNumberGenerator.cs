@@ -16,5 +16,7 @@ namespace RandomNumbersGame.Application.Interfaces
         void ApplyUserGuess(Guess userGuess, int previousGenNumber, int newGenNumber);
 
         int GetTotalPoints();
+
+        bool IsGameOver();
     }
 }

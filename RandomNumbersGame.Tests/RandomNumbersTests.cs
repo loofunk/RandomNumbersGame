@@ -80,11 +80,46 @@ namespace RandomNumbersGame.Tests
         }
 
 
-        [Test]
-        public void GivenInputShouldReturnCorrectAmountOfPoints(int input)
+        [TestCase(3, 3)]
+        [TestCase(7, 7)]
+        public void GivenASetOfGuessesShouldSetTotalPointsToCorrectValue(int numberOfHigherGuesses, 
+            int expectedTotalPoints)
         {
-            Assert.Fail();
+            // ARRANGE            
+            while (numberOfHigherGuesses > 0)
+            {
+                _randomNumberGenerator.ApplyUserGuess(Guess.Higher, 1, 22);   
+                numberOfHigherGuesses--;
+            }
+
+            // ACT
+            var result = _randomNumberGenerator.GetTotalPoints();
+
+            // ASSERT
+            Assert.AreEqual(expectedTotalPoints, result);
+            Assert.IsFalse(_randomNumberGenerator.IsGameOver());
         }
+
+        [TestCase(3, 0)]
+        [TestCase(7, 0)]
+        public void GivenASetOfLowerShouldSetTotalPointsToCorrectValue(int numberOfLowerGuesses,
+            int expectedTotalPoints)
+        {
+            // ARRANGE            
+            while (numberOfLowerGuesses > 0)
+            {
+                _randomNumberGenerator.ApplyUserGuess(Guess.Lower, 18, 2);
+                numberOfLowerGuesses--;
+            }
+
+            // ACT
+            var result = _randomNumberGenerator.GetTotalPoints();
+
+            // ASSERT
+            Assert.AreEqual(expectedTotalPoints, result);
+            Assert.IsTrue(_randomNumberGenerator.IsGameOver());
+        }
+
 
         [Test]
         public void GivenMaximumPointsSetOfPointsShouldSetGameToFinished(int input)

@@ -9,6 +9,7 @@ namespace RandomNumbersGame.Application
         private readonly int _minGenValue;
         private readonly int _maxGenValue;
         private int _totalPoints;
+        private bool _isGameOver;
 
         public RandomNumberGenerator(int minGenValue, int maxGenValue)
         {
@@ -44,19 +45,24 @@ namespace RandomNumbersGame.Application
             if (userGuess == Guess.Higher)
             {
                 if (IsInputHigher(previousGenNumber, newGenNumber))
-                    _totalPoints = 1;
+                    _totalPoints += 1;
             }
 
             if (userGuess == Guess.Lower)
             {
                 if (IsInputlower(previousGenNumber, newGenNumber))
-                    _totalPoints = 0;
+                    _isGameOver = true;
             }
         }
 
         public int GetTotalPoints()
         {
             return _totalPoints;
+        }
+
+        public bool IsGameOver()
+        {
+            return _isGameOver;
         }
     }
 }
