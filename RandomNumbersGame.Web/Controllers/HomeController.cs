@@ -22,12 +22,21 @@ namespace RandomNumbersGame.Web.Controllers
             _randomNumberGenerator = randomNumberGenerator;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? points, int? currentValue, bool? IsGameOver)
         {
             var model = new UserInputModel
             {
-                CurrentValue = _randomNumberGenerator.GenerateRandomNumber(null)
+                CurrentValue = _randomNumberGenerator.GenerateRandomNumber(currentValue)
             };
+
+            if (points != null)
+                model.Points = (int)points;
+
+            if (currentValue != null)
+                model.CurrentValue = (int)currentValue;
+
+            if (IsGameOver != null)
+                model.IsGameOver = (bool)IsGameOver;
 
             return View(model);
         }
@@ -52,9 +61,9 @@ namespace RandomNumbersGame.Web.Controllers
             if (model.IsGameOver)
                 model.CurrentValue = _randomNumberGenerator.GenerateRandomNumber(null);
 
-            model.Points = _randomNumberGenerator.TotalPoints;            
+            model.Points = _randomNumberGenerator.TotalPoints;
 
-            return View(model);
+            return RedirectToAction("Index", "Home", new { points = model.Points, currentValue = model.CurrentValue, isGameover = model.IsGameOver});
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

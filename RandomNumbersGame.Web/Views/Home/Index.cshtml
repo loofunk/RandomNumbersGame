@@ -18,6 +18,14 @@
         <p>Your game has now been reset to have another go! Good Luck!</p>
     }    
 
+    <p><b>Current Points Count:</b> @Model.Points</p>
+
+    @if(Model.Points > 0 && !Model.IsGameOver)
+    {
+        <p>Correct, you get another go!</p>
+    }
+
+
     <table>
         <tr>
             <td>Higher</td>
