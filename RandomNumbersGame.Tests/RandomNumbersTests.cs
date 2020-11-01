@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using RandomNumbersGame.Application;
+using RandomNumbersGame.Application.Enums;
 using RandomNumbersGame.Application.Interfaces;
 
 namespace RandomNumbersGame.Tests
@@ -63,11 +64,21 @@ namespace RandomNumbersGame.Tests
             Assert.AreNotEqual(firstGenValue, secondGenValue);
         }
 
-        [Test]
-        public void ShouldCorrectlyShowIfCorrectInput(int input)
+        [TestCase(1, 30, Guess.Higher, 1)]
+        [TestCase(1, 12, Guess.Higher, 1)]
+        [TestCase(1, 12, Guess.Lower, 0)]
+        [TestCase(25,99, Guess.Lower, 0)]
+        public void WhenUserMakesAGuessShouldReturnCorrectResult(int firstGenValue, int secondGenValue,
+            Guess userGuess, int expectedPoints)
         {
-            Assert.Fail();
+            // ACT
+             _randomNumberGenerator.ApplyUserGuess(userGuess, firstGenValue, secondGenValue);
+            var result = _randomNumberGenerator.GetTotalPoints();
+
+            // ASSERT
+            Assert.AreEqual(expectedPoints, result);
         }
+
 
         [Test]
         public void GivenInputShouldReturnCorrectAmountOfPoints(int input)

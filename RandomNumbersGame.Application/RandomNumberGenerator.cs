@@ -1,4 +1,5 @@
-﻿using RandomNumbersGame.Application.Interfaces;
+﻿using RandomNumbersGame.Application.Enums;
+using RandomNumbersGame.Application.Interfaces;
 using System;
 
 namespace RandomNumbersGame.Application
@@ -7,6 +8,7 @@ namespace RandomNumbersGame.Application
     {
         private readonly int _minGenValue;
         private readonly int _maxGenValue;
+        private int _totalPoints;
 
         public RandomNumberGenerator(int minGenValue, int maxGenValue)
         {
@@ -35,6 +37,26 @@ namespace RandomNumbersGame.Application
         public bool IsInputlower(int currentValue, int input)
         {
             return input < currentValue;
-        }      
+        }
+
+        public void ApplyUserGuess(Guess userGuess, int previousGenNumber, int newGenNumber)
+        {
+            if (userGuess == Guess.Higher)
+            {
+                if (IsInputHigher(previousGenNumber, newGenNumber))
+                    _totalPoints = 1;
+            }
+
+            if (userGuess == Guess.Lower)
+            {
+                if (IsInputlower(previousGenNumber, newGenNumber))
+                    _totalPoints = 0;
+            }
+        }
+
+        public int GetTotalPoints()
+        {
+            return _totalPoints;
+        }
     }
 }
