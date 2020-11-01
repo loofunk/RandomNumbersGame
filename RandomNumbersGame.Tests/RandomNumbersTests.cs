@@ -73,7 +73,7 @@ namespace RandomNumbersGame.Tests
         {
             // ACT
              _randomNumberGenerator.ApplyUserGuess(userGuess, firstGenValue, secondGenValue);
-            var result = _randomNumberGenerator.GetTotalPoints();
+            var result = _randomNumberGenerator.TotalPoints;
 
             // ASSERT
             Assert.AreEqual(expectedPoints, result);
@@ -93,7 +93,7 @@ namespace RandomNumbersGame.Tests
             }
 
             // ACT
-            var result = _randomNumberGenerator.GetTotalPoints();
+            var result = _randomNumberGenerator.TotalPoints;
 
             // ASSERT
             Assert.AreEqual(expectedTotalPoints, result);
@@ -113,7 +113,7 @@ namespace RandomNumbersGame.Tests
             }
 
             // ACT
-            var result = _randomNumberGenerator.GetTotalPoints();
+            var result = _randomNumberGenerator.TotalPoints;
 
             // ASSERT
             Assert.AreEqual(expectedTotalPoints, result);
@@ -132,7 +132,7 @@ namespace RandomNumbersGame.Tests
             _randomNumberGenerator.ApplyUserGuess(Guess.Lower, 44, 22);
 
             // ACT
-            var result = _randomNumberGenerator.GetTotalPoints();
+            var result = _randomNumberGenerator.TotalPoints;
 
             // ASSERT
             Assert.AreEqual(6, result);
@@ -154,7 +154,7 @@ namespace RandomNumbersGame.Tests
             _randomNumberGenerator.ApplyUserGuess(Guess.Higher, 44, 22);
 
             // ACT
-            var result = _randomNumberGenerator.GetTotalPoints();
+            var result = _randomNumberGenerator.TotalPoints;
 
             // ASSERT
             Assert.AreEqual(6, result);
@@ -178,7 +178,7 @@ namespace RandomNumbersGame.Tests
             _randomNumberGenerator.ApplyUserGuess(Guess.Higher, 62, 92);
 
             // ACT
-            var result = _randomNumberGenerator.GetTotalPoints();
+            var result = _randomNumberGenerator.TotalPoints;
 
             // ASSERT
             Assert.AreEqual(10, result);

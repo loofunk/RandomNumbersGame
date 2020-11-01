@@ -16,5 +16,7 @@ namespace RandomNumbersGame.Web.Models
         
         public int CurrentValue { get; set; }
         public bool IsGameOver { get; set; }
+        public int Points { get; set; }
+
     }
 }

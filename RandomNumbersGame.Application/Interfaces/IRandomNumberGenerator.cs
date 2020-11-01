@@ -7,6 +7,7 @@ namespace RandomNumbersGame.Application.Interfaces
 {
     public interface IRandomNumberGenerator
     {
+        int TotalPoints { get; set; }
         int GenerateRandomNumber(int? previousGeneratedNumber);
 
         bool IsInputHigher(int currentValue, int input);
@@ -14,8 +15,6 @@ namespace RandomNumbersGame.Application.Interfaces
         bool IsInputlower(int currentValue, int input);
 
         void ApplyUserGuess(Guess userGuess, int previousGenNumber, int newGenNumber);
-
-        int GetTotalPoints();
 
         bool IsGameOver();
     }

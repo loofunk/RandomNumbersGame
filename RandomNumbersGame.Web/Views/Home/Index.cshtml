@@ -7,24 +7,32 @@
 
 @using (Html.BeginForm("Index", "Home", FormMethod.Post))
 {
-    <div class="text-left">
-        <h1 class="display-4">Welcome</h1>
-        <p>Please select higher or lower:</p>
 
-        <table>
-            <tr>
-                <td>Higher</td>
-                <td>@Html.RadioButtonFor(m => m.HigherLower, "higher")</td>
-            </tr>
-            <tr>
-                <td>Lower</td>
-                <td>@Html.RadioButtonFor(m => m.HigherLower, "lower")</td>
-            </tr>
+<div class="text-left">
+    <h1 class="display-4">Welcome</h1>
+    <p>Please select higher or lower:</p>
 
-        </table>
+    @if (Model.IsGameOver)
+    {
+        <h2>Game Over! Hope you enjoyed playing the game!</h2>
+        <p>Your game has now been reset to have another go! Good Luck!</p>
+    }    
 
-        @Html.HiddenFor(m=>m.CurrentValue);
+    <table>
+        <tr>
+            <td>Higher</td>
+            <td>@Html.RadioButtonFor(m => m.HigherLower, "higher")</td>
+        </tr>
+        <tr>
+            <td>Lower</td>
+            <td>@Html.RadioButtonFor(m => m.HigherLower, "lower")</td>
+        </tr>
 
-        <button type="submit">Submit</button>
-    </div>
+    </table>
+
+    @Html.HiddenFor(m => m.CurrentValue)
+    @Html.HiddenFor(m => m.Points)
+
+    <button type="submit">Submit</button>
+</div>
 }
