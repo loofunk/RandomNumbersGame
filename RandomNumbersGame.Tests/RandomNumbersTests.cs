@@ -11,14 +11,14 @@ namespace RandomNumbersGame.Tests
         [SetUp]
         public void Setup()
         {
-            _randomNumberGenerator = new RandomNumberGenerator();
+            _randomNumberGenerator = new RandomNumberGenerator(1, 100);
         }
     
         [Test]
         public void ShouldGenerateARandomNumberBetween1and100()
         {
             // ACT
-            var result = _randomNumberGenerator.GenerateRandomNumber();
+            var result = _randomNumberGenerator.GenerateRandomNumber(null);
 
             // ASSERT           
             Assert.Less(result, 100);
@@ -30,10 +30,10 @@ namespace RandomNumbersGame.Tests
         [TestCase (34, 14, false)]
         [TestCase (38, 39, true)]
         [TestCase (26, 39, true)]
-        public void ShouldCorrectlyStateIsHigherThanInput(int generatedNumber, int input, bool expected)
+        public void ShouldCorrectlyStateIsHigherThanInput(int previousGenNumber, int newGenNumber, bool expected)
         {   
             // ACT
-            var result = _randomNumberGenerator.IsInputHigher(generatedNumber, input);
+            var result = _randomNumberGenerator.IsInputHigher(previousGenNumber, newGenNumber);
 
             // ASSERT
             Assert.AreEqual(expected, result);
@@ -43,19 +43,24 @@ namespace RandomNumbersGame.Tests
         [TestCase(34, 65, false)]
         [TestCase(38, 33, true)]
         [TestCase(26, 9, true)]
-        public void ShouldCorrectlyStateIsLowerThanInput(int generatedNumber, int input, bool expected)
+        public void ShouldCorrectlyStateIsLowerThanInput(int previousGenNumber, int newGenNumber, bool expected)
         {
             // ACT
-            var result = _randomNumberGenerator.IsInputlower(generatedNumber, input);
+            var result = _randomNumberGenerator.IsInputlower(previousGenNumber, newGenNumber);
 
             // ASSERT
             Assert.AreEqual(expected, result);
         }
 
         [Test]
-        public void ShouldEnsureGeneratedNumberIsNotEqualPreviouslyGeneratedNumber(int previousGeneratedNumber)
-        {
-            Assert.Fail();
+        public void ShouldEnsureGeneratedNumberIsNotEqualPreviouslyGeneratedNumber()
+        {   
+            // ACT
+            var firstGenValue = _randomNumberGenerator.GenerateRandomNumber(null);
+            var secondGenValue = _randomNumberGenerator.GenerateRandomNumber(firstGenValue);
+
+            // ASSERT
+            Assert.AreNotEqual(firstGenValue, secondGenValue);
         }
 
         [Test]

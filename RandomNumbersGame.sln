@@ -3,15 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RandomNumbersGame.Application", "RandomNumbersGame.Domain\RandomNumbersGame.Application.csproj", "{8F319185-5B32-4831-8853-9A7E7DC45193}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RandomNumbersGame.Tests", "RandomNumbersGame.Tests\RandomNumbersGame.Tests.csproj", "{D9FEC923-C6FF-4F42-8167-D8E7DF519769}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RandomNumbersGame.Api", "RandomNumbersGame.Api\RandomNumbersGame.Api.csproj", "{97C2437B-3392-4442-826F-92E07054980A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RandomNumbersGame.Web", "RandomNumbersGame.Web\RandomNumbersGame.Web.csproj", "{90527D93-F66E-435E-A2CE-86C5BCB5E486}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomNumbersGame.Repository", "RandomNumbersGame.Repository\RandomNumbersGame.Repository.csproj", "{20CDAF45-D656-4D03-BCCF-889F95F1B826}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RandomNumbersGame.Repository", "RandomNumbersGame.Repository\RandomNumbersGame.Repository.csproj", "{20CDAF45-D656-4D03-BCCF-889F95F1B826}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RandomNumbersGame.Application", "RandomNumbersGame.Application\RandomNumbersGame.Application.csproj", "{92D4540A-FF73-4FB2-8C1A-289C4C56BA2D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,18 +17,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8F319185-5B32-4831-8853-9A7E7DC45193}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8F319185-5B32-4831-8853-9A7E7DC45193}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8F319185-5B32-4831-8853-9A7E7DC45193}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8F319185-5B32-4831-8853-9A7E7DC45193}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D9FEC923-C6FF-4F42-8167-D8E7DF519769}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D9FEC923-C6FF-4F42-8167-D8E7DF519769}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9FEC923-C6FF-4F42-8167-D8E7DF519769}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9FEC923-C6FF-4F42-8167-D8E7DF519769}.Release|Any CPU.Build.0 = Release|Any CPU
-		{97C2437B-3392-4442-826F-92E07054980A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{97C2437B-3392-4442-826F-92E07054980A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{97C2437B-3392-4442-826F-92E07054980A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{97C2437B-3392-4442-826F-92E07054980A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{90527D93-F66E-435E-A2CE-86C5BCB5E486}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{90527D93-F66E-435E-A2CE-86C5BCB5E486}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90527D93-F66E-435E-A2CE-86C5BCB5E486}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +29,10 @@ Global
 		{20CDAF45-D656-4D03-BCCF-889F95F1B826}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20CDAF45-D656-4D03-BCCF-889F95F1B826}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20CDAF45-D656-4D03-BCCF-889F95F1B826}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92D4540A-FF73-4FB2-8C1A-289C4C56BA2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92D4540A-FF73-4FB2-8C1A-289C4C56BA2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92D4540A-FF73-4FB2-8C1A-289C4C56BA2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92D4540A-FF73-4FB2-8C1A-289C4C56BA2D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

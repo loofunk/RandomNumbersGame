@@ -6,7 +6,7 @@ namespace RandomNumbersGame.Application.Interfaces
 {
     public interface IRandomNumberGenerator
     {
-        int GenerateRandomNumber();
+        int GenerateRandomNumber(int? previousGeneratedNumber);
 
         bool IsInputHigher(int currentValue, int input);
 
