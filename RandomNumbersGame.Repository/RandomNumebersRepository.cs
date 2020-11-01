@@ -2,7 +2,7 @@
 
 namespace RandomNumbersGame.Repository
 {
-    public class RandomNumebersRepository : IRandomNumebersRepository
+    public class RandomNumbersRepository : IRandomNumbersRepository
     {
     }
 }

@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RandomNumbersGame.Application\RandomNumbersGame.Application.csproj" />
+    <ProjectReference Include="..\RandomNumbersGame.Repository\RandomNumbersGame.Repository.csproj" />
   </ItemGroup>
 
 </Project>

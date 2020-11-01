@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RandomNumbersGame.Application;
 using RandomNumbersGame.Application.Interfaces;
+using RandomNumbersGame.Repository;
 
 namespace RandomNumbersGame.Web
 {
@@ -27,6 +28,8 @@ namespace RandomNumbersGame.Web
         {
             services.AddControllersWithViews();
             services.AddTransient<IRandomNumberGenerator, IRandomNumberGenerator>(x => new RandomNumberGenerator(1, 100));
+            services.AddTransient<IRandomNumbersRepository, RandomNumbersRepository>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

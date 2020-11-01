@@ -1,6 +1,6 @@
 ﻿namespace RandomNumbersGame.Repository
 {
-    public interface IRandomNumebersRepository
+    public interface IRandomNumbersRepository
     {
     }
 }
