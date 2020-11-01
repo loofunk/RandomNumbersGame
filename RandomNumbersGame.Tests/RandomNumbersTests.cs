@@ -26,16 +26,30 @@ namespace RandomNumbersGame.Tests
             Assert.Greater(result, 1);
         }
 
-        [Test]
-        public void ShouldCorrectlyStateIsHigherThanInput(int input)
-        {
-            Assert.Fail();
+        [TestCase (34, 10, false)]
+        [TestCase (34, 14, false)]
+        [TestCase (38, 39, true)]
+        [TestCase (26, 39, true)]
+        public void ShouldCorrectlyStateIsHigherThanInput(int generatedNumber, int input, bool expected)
+        {   
+            // ACT
+            var result = _randomNumberGenerator.IsInputHigher(generatedNumber, input);
+
+            // ASSERT
+            Assert.AreEqual(expected, result);
         }
 
-        [Test]
-        public void ShouldCorrectlyStateIsLowerThanInput(int input)
+        [TestCase(34, 54, false)]
+        [TestCase(34, 65, false)]
+        [TestCase(38, 33, true)]
+        [TestCase(26, 9, true)]
+        public void ShouldCorrectlyStateIsLowerThanInput(int generatedNumber, int input, bool expected)
         {
-            Assert.Fail();
+            // ACT
+            var result = _randomNumberGenerator.IsInputlower(generatedNumber, input);
+
+            // ASSERT
+            Assert.AreEqual(expected, result);
         }
 
         [Test]
